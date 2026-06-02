@@ -495,3 +495,12 @@ jobs:
             echo "📜 最近日志（最后 30 行）:"
             tail -30 logs/stock_analysis_*.log 2>/dev/null || echo "无日志"
           fi
+- name: Send Telegram Message
+  uses: appleboy/telegram-action@master
+  with:
+    to: ${{ secrets.TELEGRAM_CHAT_ID }}
+    token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+    message: |
+      📊 每日股票分析完成
+
+      👉 请查看 GitHub Actions
